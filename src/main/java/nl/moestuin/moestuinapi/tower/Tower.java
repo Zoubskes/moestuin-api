@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "tower")
 public class Tower {
 
-    // We gebruiken towername als primary key
+    // We gebruiken towername als primary keyy
     @Id
     @Column(name = "towername")
     private String towername;
