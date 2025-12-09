@@ -9,16 +9,19 @@ import jakarta.persistence.Table;
 @Table(name = "tower")
 public class Tower {
 
-    // We gebruiken towername als primary keyy
     @Id
     @Column(name = "towername")
     private String towername;
 
+    @Column(name = "device_id", nullable = false, unique = true)
+    private String deviceId;
+
     public Tower() {
     }
 
-    public Tower(String towername) {
+    public Tower(String towername, String deviceId) {
         this.towername = towername;
+        this.deviceId = deviceId;
     }
 
     public String getTowername() {
@@ -27,5 +30,13 @@ public class Tower {
 
     public void setTowername(String towername) {
         this.towername = towername;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }

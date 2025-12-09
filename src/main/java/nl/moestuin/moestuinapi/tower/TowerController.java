@@ -16,46 +16,44 @@ public class TowerController {
         this.repository = repository;
     }
 
-    // Alle towers ophalen
     @GetMapping
-    public List<Tower> getAll() {
+    public List<Tower> findAll() {
         return repository.findAll();
     }
 
-    // Eén tower op towername
     @GetMapping("/{towername}")
-    public ResponseEntity<Tower> getByTowername(@PathVariable String towername) {
+    public ResponseEntity<Tower> findById(@PathVariable String towername) {
         Optional<Tower> tower = repository.findById(towername);
         return tower.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Nieuwe tower aanmaken
-    // POST /api/towers  met body: { "towername": "tower-1" }
     @PostMapping
-    public Tower create(@RequestBody Tower tower) {
-        return repository.save(tower);
-    }
-
-    // Tower hernoemen (update van key)
-    // PUT /api/towers/{towername}  body: { "towername": "nieuwe-naam" }
-    @PutMapping("/{towername}")
-    public ResponseEntity<Tower> update(
-            @PathVariable String towername,
-            @RequestBody Tower updated
-    ) {
-        if (!repository.existsById(towername)) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Tower> create(@RequestBody Tower tower) {
+        if (repository.existsById(tower.getTowername())) {
+            return ResponseEntity.badRequest().build();
         }
-
-        // als je de primary key wilt "hernoemen"
-        // eerst oude verwijderen, dan nieuwe opslaan
-        repository.deleteById(towername);
-        Tower saved = repository.save(new Tower(updated.getTowername()));
+        Tower saved = repository.save(tower);
         return ResponseEntity.ok(saved);
     }
 
-    // Tower verwijderen
+    @PutMapping("/{towername}")
+    public ResponseEntity<Tower> update(@PathVariable String towername,
+                                        @RequestBody Tower updated) {
+        Optional<Tower> existing = repository.findById(towername);
+        if (existing.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Tower tower = existing.get();
+        tower.setDeviceId(updated.getDeviceId());
+        // towername blijft de id; je kunt eventueel ook hernoemen:
+        // tower.setTowername(updated.getTowername());
+
+        Tower saved = repository.save(tower);
+        return ResponseEntity.ok(saved);
+    }
+
     @DeleteMapping("/{towername}")
     public ResponseEntity<Void> delete(@PathVariable String towername) {
         if (!repository.existsById(towername)) {
