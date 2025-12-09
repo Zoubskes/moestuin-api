@@ -2,6 +2,7 @@ package nl.moestuin.moestuinapi.plant;
 
 import jakarta.persistence.*;
 
+//teest
 @Entity
 @Table(name = "plant")
 public class Plant {
