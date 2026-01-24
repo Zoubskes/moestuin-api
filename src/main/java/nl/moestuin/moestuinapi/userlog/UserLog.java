@@ -1,6 +1,7 @@
 package nl.moestuin.moestuinapi.userlog;
 
 import jakarta.persistence.*;
+import nl.moestuin.moestuinapi.crypto.CryptoStringConverter;
 
 import java.time.OffsetDateTime;
 
@@ -13,9 +14,11 @@ public class UserLog {
     @Column(name = "log_id")
     private Long logId;
 
+    @Convert(converter = CryptoStringConverter.class)
     @Column(name = "user", nullable = false)
     private String user;
 
+    @Convert(converter = CryptoStringConverter.class)
     @Column(name = "gebeurtenis", nullable = false)
     private String gebeurtenis;
 
