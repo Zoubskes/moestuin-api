@@ -7,6 +7,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/measurements")
+@CrossOrigin(origins = {
+        "http://localhost:8000",
+        "http://localhost:5173",
+        "https://localhost:5173"
+})
 public class MeasurementController {
 
     private final MeasurementRepository repository;

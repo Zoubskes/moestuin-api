@@ -8,6 +8,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/plants")
+@CrossOrigin(origins = {
+        "http://localhost:8000",
+        "http://localhost:5173",
+        "https://localhost:5173"
+})
 public class PlantController {
 
     private final PlantRepository repository;

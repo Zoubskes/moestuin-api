@@ -8,6 +8,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user-logs")
+@CrossOrigin(origins = {
+        "http://localhost:8000",
+        "http://localhost:5173",
+        "https://localhost:5173"
+})
 public class UserLogController {
 
     private final UserLogRepository repository;

@@ -8,6 +8,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/towers")
+@CrossOrigin(origins = {
+        "http://localhost:8000",
+        "http://localhost:5173",
+        "https://localhost:5173"
+})
 public class TowerController {
 
     private final TowerRepository repository;

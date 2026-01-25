@@ -8,6 +8,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pots")
+@CrossOrigin(origins = {
+        "http://localhost:8000",
+        "http://localhost:5173",
+        "https://localhost:5173"
+})
 public class PotController {
 
     private final PotRepository repository;
