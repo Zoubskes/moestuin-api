@@ -11,7 +11,8 @@ import java.util.Optional;
 @CrossOrigin(origins = {
         "http://localhost:8000",
         "http://localhost:5173",
-        "https://localhost:5173"
+        "https://localhost:5173",
+        "https://avansacademie.com"
 })
 public class PlantInPotController {
 
@@ -52,7 +53,7 @@ public class PlantInPotController {
 
         PlantInPot pip = existing.get();
         pip.setPlantId(updated.getPlantId());
-        pip.setUser(updated.getUser());
+        pip.setUsername(updated.getUsername());
         pip.setStartTimestamp(updated.getStartTimestamp());
 
         PlantInPot saved = repository.save(pip);

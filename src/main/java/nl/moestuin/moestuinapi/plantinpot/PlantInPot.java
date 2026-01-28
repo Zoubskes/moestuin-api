@@ -15,8 +15,8 @@ public class PlantInPot {
     @Column(name = "plant_id", nullable = false)
     private Long plantId;
 
-    @Column(name = "user")
-    private String user;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "start_timestamp")
     private OffsetDateTime startTimestamp;
@@ -40,12 +40,12 @@ public class PlantInPot {
         this.plantId = plantId;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public OffsetDateTime getStartTimestamp() {

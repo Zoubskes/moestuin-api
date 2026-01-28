@@ -15,8 +15,8 @@ public class UserLog {
     private Long logId;
 
     @Convert(converter = CryptoStringConverter.class)
-    @Column(name = "user", nullable = false)
-    private String user;
+    @Column(name = "username", nullable = false)
+    private String username;
 
     @Convert(converter = CryptoStringConverter.class)
     @Column(name = "gebeurtenis", nullable = false)
@@ -36,12 +36,12 @@ public class UserLog {
         this.logId = logId;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String user) {
+        this.username = username;
     }
 
     public String getGebeurtenis() {

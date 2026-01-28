@@ -10,7 +10,8 @@ import java.util.List;
 @CrossOrigin(origins = {
         "http://localhost:8000",
         "http://localhost:5173",
-        "https://localhost:5173"
+        "https://localhost:5173",
+        "https://avansacademie.com"
 })
 public class MeasurementController {
 
