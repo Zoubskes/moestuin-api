@@ -41,7 +41,7 @@ public class UserLog {
     }
 
     public void setUsername(String user) {
-        this.username = username;
+        this.username = user;
     }
 
     public String getGebeurtenis() {
